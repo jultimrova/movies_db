@@ -1,12 +1,20 @@
 import App from 'next/app';
 import Head from 'next/head';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/sidebar';
 import React from 'react';
-import Footer from '../components/Footer';
+import Footer from "../components/footer";
 
 export default class MovieApp extends App {
+
+    static async getInitialProps(appContext) {
+        //Executing getInitialProps of page you are navigated to
+        const appProps = await App.getInitialProps(appContext)
+        return {...appProps}
+    }
+
     render() {
-        const {Component} = this.props
+        const {Component, pageProps} = this.props
+
         return (
             <div>
                 <Head>
@@ -28,7 +36,7 @@ export default class MovieApp extends App {
 
                 <Sidebar/>
                 <div className='base-page'>
-                    <Component/>
+                    <Component {...pageProps}/>
                 </div>
                 <Footer/>
                 <style>{`

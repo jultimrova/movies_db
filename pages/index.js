@@ -1,7 +1,7 @@
 import React from 'react'
-import SideMenu from '../components/SideMenu';
-import Carousel from '../components/Carousel';
-import MovieList from '../components/MovieList';
+import SideMenu from '../components/sideMenu';
+import Carousel from '../components/carousel';
+import MovieList from '../components/movieList';
 import {getMovies} from "../actions";
 
 const Home = (props) => {
@@ -29,9 +29,7 @@ const Home = (props) => {
 Home.getInitialProps = async () => {
     const movies = await getMovies()
 
-    return {
-        movies
-    }
+    return {movies}
 }
 
 /*class Home extends React.Component {
