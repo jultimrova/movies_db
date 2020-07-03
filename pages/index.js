@@ -5,6 +5,7 @@ import MovieList from '../components/movieList';
 import {getMovies} from "../actions";
 
 const Home = (props) => {
+    const {images}= props
     return (
         <div>
             <div className="home-page">
@@ -14,7 +15,7 @@ const Home = (props) => {
                             <SideMenu appName={'Movie categories'}/>
                         </div>
                         <div className="col-lg-9">
-                            <Carousel/>
+                            <Carousel images={images}/>
                             <div className="row">
                                 <MovieList movies={props.movies || []}/>
                             </div>
@@ -28,8 +29,15 @@ const Home = (props) => {
 
 Home.getInitialProps = async () => {
     const movies = await getMovies()
+    const images = movies.map(movie => {
+        return {
+            id: `image-${movie.id}`,
+            url: movie.cover,
+            name: movie.name
+        }
+    })
 
-    return {movies}
+    return {movies, images}
 }
 
 /*class Home extends React.Component {
