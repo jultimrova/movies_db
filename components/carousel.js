@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Carousel = ({images}) => {
-
+const Carousel = (props) => {
+const {images} = props
     return (
         <div id="carouselExampleIndicators" className="carousel slide my-4" data-ride="carousel">
             <ol className="carousel-indicators">
                 {
                     images.map((image, id) => (
                         <li
-                            key={id}
+                            key={image.id}
                             data-target="#carouselExampleIndicators"
                             data-slide-to={id}
                             className={id === 0 ? 'active' : ''}>
@@ -19,8 +19,9 @@ const Carousel = ({images}) => {
             <div className="carousel-inner" role="listbox">
                 {
                     images.map((image, id) => (
-                        <div className={`carousel-item ${id === 0 ? 'active' : ''}`}>
+                        <div key={image.id} className={`carousel-item ${id === 0 ? 'active' : ''}`}>
                             <img
+
                                 className="d-block img-fluid"
                                 src={image.url}
                                 alt={image.name}/>
