@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = () => {
+const Modal = (props) => {
 
     let closeButton = null
 
@@ -26,11 +26,14 @@ const Modal = () => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            ...
+                            {props.children}
                         </div>
                         <div className="modal-footer">
-                            <button ref={elem => closeButton = elem} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button onClick={submitModal} type="button" className="btn btn-primary">Save changes</button>
+                            <button ref={elem => closeButton = elem} type="button" className="btn btn-secondary"
+                                    data-dismiss="modal">Close
+                            </button>
+                            <button onClick={submitModal} type="button" className="btn btn-primary">Save changes
+                            </button>
                         </div>
                     </div>
                 </div>
