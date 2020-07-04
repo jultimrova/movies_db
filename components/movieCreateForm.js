@@ -1,32 +1,85 @@
+import React, {useState} from "react";
+
 const MovieCreateForm = () => {
+    const [form, setForm] = useState({
+        name: 'Some movie',
+        description: 'Some description'
+    })
+
+    const handleChange = e => {
+        const target = event.target
+        const name = target.name
+
+        setForm({
+            ...form,
+            [name]: target.value
+        })
+    }
+
     return (
         <form>
+            {JSON.stringify(form)}
             <div className="form-group">
                 <label htmlFor="name">Name</label>
-                <input type="text" className="form-control" id="name" aria-describedby="emailHelp"
+                <input value={form.name}
+                       onChange={handleChange}
+                       name='name'
+                       type="text"
+                       className="form-control"
+                       id="name"
+                       aria-describedby="emailHelp"
                        placeholder="Lord of the Rings"/>
             </div>
             <div className="form-group">
                 <label htmlFor="description">Description</label>
-                <input type="text" className="form-control" id="description"
+                <input value={form.description}
+                       onChange={handleChange}
+                       name='description'
+                       type="text"
+                       className="form-control"
+                       id="description"
                        placeholder="Somewhere in Middle-earth..."/>
             </div>
             <div className="form-group">
                 <label htmlFor="description">Rating</label>
-                <input type="number" max="5" min="0" className="form-control" id="rating" placeholder="3"/>
+                <input value={form.rating}
+                       name='rating'
+                       type="number"
+                       max="5"
+                       min="0"
+                       className="form-control"
+                       id="rating" placeholder="3"/>
                 <small id="emailHelp" className="form-text text-muted">Max: 5, Min: 0 </small>
             </div>
             <div className="form-group">
                 <label htmlFor="image">Image</label>
-                <input type="text" className="form-control" id="image" placeholder="http://....."/>
+                <input value={form.image}
+                       onChange={handleChange}
+                       name='image'
+                       type="text"
+                       className="form-control"
+                       id="image"
+                       placeholder="http://....."/>
             </div>
             <div className="form-group">
                 <label htmlFor="cover">Cover</label>
-                <input type="text" className="form-control" id="cover" placeholder="http://......"/>
+                <input value={form.cover}
+                       onChange={handleChange}
+                       name='cover'
+                       type="text"
+                       className="form-control"
+                       id="cover"
+                       placeholder="http://......"/>
             </div>
             <div className="form-group">
                 <label htmlFor="longDesc">Long Description</label>
-                <textarea className="form-control" id="longDesc" rows="3"></textarea>
+                <textarea value={form.longDesc}
+                          onChange={handleChange}
+                          name='longDesc'
+                          className="form-control"
+                          id="longDesc"
+                          rows="3">
+                </textarea>
             </div>
             <div className="form-group">
                 <label htmlFor="genre">Genre</label>
