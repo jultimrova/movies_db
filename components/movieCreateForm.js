@@ -1,17 +1,24 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const MovieCreateForm = (props) => {
-    const [form, setForm] = useState({
+
+    const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false)
+
+    const defaultData = {
         name: '',
         description: '',
         rating: '',
         image: '',
         cover: '',
         longDesc: ''
-    })
+    }
 
-    const handleChange = e => {
-        const target = e.target
+    const formData = props.initialData ? {...props.initialData} : defaultData
+
+    const [form, setForm] = useState(formData)
+
+    const handleChange = event => {
+        const target = event.target
         const name = target.name
 
         setForm({
@@ -20,8 +27,8 @@ const MovieCreateForm = (props) => {
         })
     }
 
-    const handleGenreChange = e => {
-        const {options} = e.target
+    const handleGenreChange = event => {
+        const {options} = event.target
         const optionsLength = options.length
         let value = []
 
