@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
 const MovieCreateForm = (props) => {
 
@@ -123,7 +123,12 @@ const MovieCreateForm = (props) => {
                     <option>action</option>
                 </select>
             </div>
-            <button onClick={submitForm} type="button" className="btn btn-primary">Create</button>
+            <button onClick={submitForm}
+                    type="button"
+                    className="btn btn-primary"
+            >
+                {props.submitButton || 'Create'}
+            </button>
         </form>
     )
 }

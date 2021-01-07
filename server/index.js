@@ -1,5 +1,5 @@
 const next = require('next')
-const express = require('express');
+const express = require('express')
 const bodyParser = require('body-parser')
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -43,7 +43,6 @@ app.prepare().then(() => {
         })
     })
 
-
     server.delete('/api/v1/movies/:id', (req, res) => {
         const {id} = req.params
         const movieId = moviesData.findIndex(m => m.id === id)
@@ -57,7 +56,25 @@ app.prepare().then(() => {
             if (err) {
                 return res.status(422).send(err)
             }
-            return res.json('Movie has been successfully added.')
+            return res.json('Movie has been successfully deleted.')
+        })
+    })
+
+    server.patch('/api/v1/movies/:id', (req, res) => {
+        const {id} = req.params
+        const movie = req.body
+        const movieId = moviesData.findIndex(m => m.id === id)
+
+        moviesData[movieId] = movie
+
+        const pathToFile = path.join(__dirname, filePath)
+        const stringifiedData = JSON.stringify(moviesData, null, 2)
+
+        fs.writeFile(pathToFile, stringifiedData, err => {
+            if (err) {
+                return res.status(422).send(err)
+            }
+            return res.json('Movie has been successfully updated.')
         })
     })
 

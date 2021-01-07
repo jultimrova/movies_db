@@ -16,7 +16,6 @@ const SideMenu = (props) => {
         })
     }
 
-
     return (
         <div>
             <Modal ref={elem => modal = elem} hasSubmit={false}>

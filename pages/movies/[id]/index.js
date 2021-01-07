@@ -20,9 +20,17 @@ const Movie = (props) => {
                 <p className="lead">{movie.description}</p>
                 <hr className="my-4"/>
                 <p>{movie.genre}</p>
-                <button className="btn btn-primary btn-lg mr-1" href="#" role="button">Show more</button>
-                <button onClick={() => handleDeleteMovie(id)} className="btn btn-danger btn-lg mr-1" href="#" role="button">Delete</button>
-                <button onClick={() => router.push(`/movies/${id}/edit`)} className="btn btn-warning btn-lg" href="#" role="button">Edit</button>
+                <button className="btn btn-primary btn-lg mr-1"
+                        href="#"
+                        role="button">Show more</button>
+                <button onClick={() => handleDeleteMovie(id)}
+                        className="btn btn-danger btn-lg mr-1"
+                        href="#"
+                        role="button">Delete</button>
+                <button onClick={() => router.push(`/movies/${id}/edit`)}
+                        className="btn btn-warning btn-lg"
+                        href="#"
+                        role="button">Edit</button>
             </div>
             <p className='desc-text'>{movie.longDesc}</p>
             <style>{`
